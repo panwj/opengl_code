@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.test.opengl.comtriangle.CommonTriangleActivity;
+import com.test.opengl.triangle.TriangleActivity;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         findViewById(R.id.btn_triangle).setOnClickListener(this);
+
+        findViewById(R.id.btn_com_triangle).setOnClickListener(this);
 
     }
 
@@ -72,11 +77,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_triangle:
                 startTriangleActivity();
                 break;
+            case R.id.btn_com_triangle:
+                startComTriangleActivity();
+                break;
         }
     }
 
     private void startTriangleActivity() {
         Intent intent = new Intent(this, TriangleActivity.class);
+        startActivity(intent);
+    }
+
+    private void startComTriangleActivity() {
+        Intent intent = new Intent(this, CommonTriangleActivity.class);
         startActivity(intent);
     }
 }

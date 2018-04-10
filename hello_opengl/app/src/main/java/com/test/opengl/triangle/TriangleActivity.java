@@ -1,9 +1,11 @@
-package com.test.opengl;
+package com.test.opengl.triangle;
 
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
+import com.test.opengl.R;
 
 /**
  * Created by panwenjuan on 18-4-10.
@@ -21,19 +23,23 @@ public class TriangleActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mGLSurfaceView.onResume();
+    protected void onResume() {
+        super.onResume();
+        if (mGLSurfaceView != null) {
+            mGLSurfaceView.onResume();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mGLSurfaceView.onPause();
+        if (mGLSurfaceView != null) {
+            mGLSurfaceView.onPause();
+        }
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

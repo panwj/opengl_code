@@ -1,11 +1,13 @@
-package com.test.opengl;
+package com.test.opengl.triangle;
 
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
-import android.os.SystemClock;
 import android.util.Log;
+
+import com.test.opengl.Constant;
+import com.test.opengl.R;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -19,6 +21,27 @@ import javax.microedition.khronos.opengles.GL10;
  *
  * 注意：形状和其他静态物体应该被初始化一次为最佳性能在你的onsurfacecreated()方法。
  * 避免在ondrawframe()重新对对象的初始化，这会导致系统重新创建对象，每帧重绘和减慢你的应用。
+ *
+ * 矩阵变换：
+ * 视图变换：从不同位置去观察
+ * 模型变换：移动，旋转或缩放物体
+ * 视口变换：只拍摄物体一部分，使物体在照片中只显示一部分
+ * 投影变换：给物体拍照印成照片。可以做到“近大远小”、裁剪只看部分等等透视效果
+ *
+ * 在变换之前我们需要声明当前使用的哪种变换
+ * 模型视图变换: gl.glMatrixMode(GL10.GL_MODELVIEW);
+ *
+ * 投影变换：gl.glMatrixMode(GL10.GL_PROJECTION); gl.glLoadIdentity();
+ *
+ * 视口变换： gl.glViewport(0, 0, width, height);
+ *
+ * 但是有一点值得注意的是，在此之前，你可能针对模型做了其他的操作，而我们知道，每次操作相当于一次矩阵相乘。
+ * OpenGL中，使用“当前矩阵”表示要执行的变化，为了防止前面执行过变换“保留”在“当前矩阵”，我们需要把“当前矩阵”复位，
+ * 即变为单位矩阵（对角线上的元素全为1），通过执行如下函数：gl.glLoadIdentity();
+ *
+ * 关于绘制参考链接：
+ * https://blog.csdn.net/huachao1001/article/details/52044602
+ * http://hukai.me/android-training-course-in-chinese/graphics/opengl/shapes.html
  *
  *
  * Created by panwenjuan on 18-1-5.
@@ -50,10 +73,9 @@ public class HelloGLRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
-        Log.d("sss", "onSurfaceCreated() ...");
+        Log.d(Constant.TAG, "onSurfaceCreated() ...");
         //GLES20 version for android
-        // Set the background frame color
-//        GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+        //GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 
         uColor = mContext.getResources().getColor(R.color.white);
         float fAlpha = (float)(uColor >> 24) / 0xFF;
@@ -61,8 +83,9 @@ public class HelloGLRenderer implements GLSurfaceView.Renderer {
         float fGreen = (float)((uColor >> 8) & 0xFF) / 0xFF;
         float fBlue = (float)(uColor & 0xFF) / 0xFF;
 
-//        Log.d("sss", "fAlpha = " + fAlpha + "   fRed = " + fRed + "  fGreen = " + fGreen + "  fBlue = " + fBlue);
+        //Log.d(Constant.TAG, "fAlpha = " + fAlpha + "   fRed = " + fRed + "  fGreen = " + fGreen + "  fBlue = " + fBlue);
 
+        //设置清屏颜色，可理解为画布的颜色
         GLES20.glClearColor(fRed, fGreen, fBlue, fAlpha);
 
         // initialize the triangle vertex array
@@ -84,8 +107,9 @@ public class HelloGLRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl10, int width, int height) {
-        Log.d("sss", "onSurfaceChanged() ...  width = " + width + "   height = " + height);
+        Log.d(Constant.TAG, "onSurfaceChanged() ...  width = " + width + "   height = " + height);
 
+        //设置视口
         GLES20.glViewport(0, 0, width, height);
 
         /*//方法一 ： 归一化设备坐标
@@ -105,7 +129,7 @@ public class HelloGLRenderer implements GLSurfaceView.Renderer {
         //方法二 ： 合并视口矩阵，投影矩阵
         float ratio = (float) width / height;
         // 创建投影矩阵
-        // this projection matrix is applied to object coodinates
+        // 可将当前可视空间设置为透视投影空间：
         Matrix.frustumM(mProjMatrix, 0, -ratio, ratio, -1, 1, 3, 7);
 
         // uMVPMatrix 需要和定义的顶点数组中使用的矩阵变量一致
@@ -117,7 +141,6 @@ public class HelloGLRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onDrawFrame(GL10 gl10) {
-//        Log.d("sss", "onDrawFrame() ...");
         //一直在回调绘制
 
         // Apply a ModelView Projection transformation
@@ -132,7 +155,7 @@ public class HelloGLRenderer implements GLSurfaceView.Renderer {
         Matrix.multiplyMM(mMVPMatrix, 0, mProjMatrix, 0, mMVPMatrix, 0);
 //        Matrix.multiplyMM(mMVPMatrix, 0, mProjMatrix, 0, mVMatrix, 0);//合并视投
 
-        // Redraw background color
+        // 使用glClearColor函数所设置的颜色进行清屏。
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
         // Add program to OpenGL environment

@@ -1,4 +1,4 @@
-package com.test.opengl;
+package com.test.opengl.triangle;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
@@ -18,7 +18,7 @@ public class HelloGLSurfaceView extends GLSurfaceView {
 
     public HelloGLSurfaceView(Context context) {
         super(context);
-        // Create an OpenGL ES 2.0 context.
+        // OpenGL 设置使用的版本
         setEGLContextClientVersion(2);
         // Set the Renderer for drawing on the GLSurfaceView'
         mRenderer = new HelloGLRenderer(context);
@@ -30,13 +30,16 @@ public class HelloGLSurfaceView extends GLSurfaceView {
 
     public HelloGLSurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        // Create an OpenGL ES 2.0 context.
+        // OpenGL 设置使用的版本
         setEGLContextClientVersion(2);
         // Set the Renderer for drawing on the GLSurfaceView
         mRenderer = new HelloGLRenderer(context);
         setRenderer(mRenderer);
 
-        // Render the view only when there is a change
+        /**
+         * 设置渲染模式，仅在绘制数据发生变化时才在视图中进行绘制操作：如果选用这一配置选项
+         ，那么除非调用了requestRender()，否则GLSurfaceView不会被重新绘制，这样做可以让应用的性能及效率得到提高。
+         */
         setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
     }
 
@@ -66,6 +69,7 @@ public class HelloGLSurfaceView extends GLSurfaceView {
                 }
 
                 mRenderer.mAngle += (dx + dy) * TOUCH_SCALE_FACTOR;
+                //因为设置了绘制模式，所以不能省略
                 requestRender();
         }
 

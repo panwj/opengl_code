@@ -1,4 +1,4 @@
-package com.test.opengl;
+package com.test.opengl.triangle;
 
 import android.opengl.GLES20;
 
@@ -54,15 +54,22 @@ public class DrawTriangle {
                 0.0f,  1.0f, 0
         };
 
-        // initialize vertex Buffer for triangle
+        // 先初始化buffer，数组的长度*4，因为一个float占4个字节
         ByteBuffer vbb = ByteBuffer.allocateDirect(
-                // (# of coordinate values * 4 bytes per float)
                 triangleCoords.length * 4);
 
-        vbb.order(ByteOrder.nativeOrder()); // use the device hardware's native byte order
-        mTriangleVB = vbb.asFloatBuffer();  // create a floating point buffer from the ByteBuffer
-        mTriangleVB.put(triangleCoords);    // add the coordinates to the FloatBuffer
-        mTriangleVB.position(0);            // set the buffer to read the first coordinate
+        /**
+         * 以本机字节顺序来修改此缓冲区的字节顺序
+         * OpenGL在底层的实现是C语言，与Java默认的数据存储字节顺序可能不同，即大端小端问题。
+         * 因此，为了保险起见，在将数据传递给OpenGL之前，我们需要指明使用本机的存储顺序
+         */
+        vbb.order(ByteOrder.nativeOrder());
+        // create a floating point buffer from the ByteBuffer
+        mTriangleVB = vbb.asFloatBuffer();
+        //将给定float[]数据从当前位置开始，依次写入此缓冲区
+        mTriangleVB.put(triangleCoords);
+        //设置此缓冲区的位置。如果标记已定义并且大于新的位置，则要丢弃该标记。
+        mTriangleVB.position(0);
     }
 
     public int loadShader(int type, String shaderCode){
