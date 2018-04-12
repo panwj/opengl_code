@@ -17,7 +17,7 @@ https://blog.piasy.com/2016/06/07/Open-gl-es-android-2-part-1/
 
 ## opengl es 重要方法
 
-方法1
+###### 1.方法
 ```java
 glVertexPointer
 
@@ -68,7 +68,7 @@ java.lang.IllegalStateException——如果是OpenGL ES 1.1并且VBOs可用。
 
 java.lang.IllegalArgumentException——如果pointer不是直接缓存。
 
-方法2:
+###### 2.方法
 ```java
 glViewport
 
@@ -104,7 +104,7 @@ width——指明视口的宽，如果ＧＬ上下文首次附于一个surface�
 height——指明视口的高，如果ＧＬ上下文首次附于一个surface则宽、高为这个surface大小。
 
 
-方法3:
+###### 3.方法
 ```java
 glMatrixMode
 
@@ -136,7 +136,7 @@ GL_MATRIX_PALETTE_OES（OES_matrix_palette 扩展）——启用矩阵调色板�
 mode——指明哪一个堆允许后续的矩阵操作。允许的值有L_MODELVIEW,GL_PROJECTION和GL_TEXTURE，在有OES_matrix_palette扩展时，GL_MATRIX_PALETTE_OES也被允许，初始值是GL_MODELVIEW。
 
 
-方法4:
+###### 4.方法
 ```java
 glLoadIdentity
 
@@ -160,3 +160,60 @@ glLoadIdentity使特征矩阵代替当前矩阵。语义上等价于调用glLoad
 ( 0       0       0      1 )
 
 但在一些情况下它更高效。
+
+###### 5.方法
+```java
+glColorPointer
+
+public void glColorPointer(int size,int type,int stride,Buffer pointer)
+```
+
+功能：
+
+定义一个颜色矩阵。
+
+详细：
+
+glColorPointer指明渲染时使用的颜色矩阵。size指明每个颜色的元素数量，必须为4。type指明每个颜色元素的数据类型，stride指明从一个颜色到下一个允许的顶点的字节增幅，并且属性值被挤入简单矩阵或存储在单独的矩阵中（简单矩阵存储可能在一些版本中更有效率）。
+
+当一个颜色矩阵被指定，size, type, stride和pointer将被保存在客户端状态。
+
+如果颜色矩阵被启用，当使用glDrawArrays方法或glDrawElements方法时被调用。利用glEnableClientState方法与glDisableClientState方法以GL_COLOR_ARRAY为参数来启用和禁止颜色矩阵，颜色矩阵初始值为禁用，不允许glDrawArrays方法和glDrawElements方法调用。
+
+使用glDrawArrays方法依据事先指明的顶点和顶点矩阵构建一系列图元（都是同种类型的），使用glDrawElements方法依据顶点索引和顶点属性构建一系列图元。
+
+注意：
+
+glColorPointer在客户端应用。
+
+错误：
+
+size 不是4时将产生GL_INVALID_VALUE。
+
+type不是一个允许的值时将产生GL_INVALID_ENUM。
+
+stride为负数时将产生GL_INVALID_VALUE。
+
+pointer参数必须是直接缓存并且类型与type指定的类型相同。
+
+参数：
+
+size——指明每个颜色的元素数量，必须为4。
+
+type——指明每个矩阵中颜色元素的数据类型，允许的符号常量有GL_UNSIGNED_BYTE, GL_FIXED和GL_FLOAT，初始值为GL_FLOAT。
+
+stride——指明连续的点之间的位偏移，如果stride为0时，颜色被紧密挤入矩阵，初始值为0。
+
+pointer——指明包含颜色的缓冲区，如果pointer为null，则为设置缓冲区。
+
+抛出：
+
+java.lang.IllegalStateException——如果是OpenGL ES 1.1并且VBOs（Vertex Buffer Object即顶点缓冲对象）启用。
+
+java.lang.IllegalArgumentException——如果pointer不是直接缓存。
+
+网络解释：
+
+顶点数组的概念如此的简单，如其名，就是将原来由一系列的glVertex*指定的顶点放在一个数组中，（其意思就是顶点数据组成的数组）由顶点数组处理 函数一次性指定。事实上，不仅如此，其一次性指定的不仅仅是数组，还可以是其他系列的东西，比如表面发现,RGBA颜色，辅助颜色等。
+
+
