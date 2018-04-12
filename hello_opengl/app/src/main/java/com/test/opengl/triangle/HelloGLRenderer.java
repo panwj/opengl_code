@@ -112,7 +112,7 @@ public class HelloGLRenderer implements GLSurfaceView.Renderer {
         //设置视口
         GLES20.glViewport(0, 0, width, height);
 
-        /*//方法一 ： 归一化设备坐标
+        /*//方法一 ： 归一化设备坐标 正交投影
         final float aspectRatio = width > height ?
                 (float) width / (float) height :
                 (float) height / (float) width;
