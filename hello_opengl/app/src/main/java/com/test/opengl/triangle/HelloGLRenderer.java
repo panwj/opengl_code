@@ -44,6 +44,21 @@ import javax.microedition.khronos.opengles.GL10;
  * http://hukai.me/android-training-course-in-chinese/graphics/opengl/shapes.html
  *
  *
+ * GLSL（OpenGL Shader Language）
+ * https://blog.piasy.com/2016/06/07/Open-gl-es-android-2-part-1/
+ *
+ * 创建 GLSL 程序：glCreateProgram
+ * 加载 shader 代码：glShaderSource 和 glCompileShader
+ * attatch shader 代码：glAttachShader
+ * 链接 GLSL 程序：glLinkProgram
+ * 使用 GLSL 程序：glUseProgram
+ * 获取 shader 代码中的变量索引：glGetAttribLocation
+ * 启用 vertex：glEnableVertexAttribArray
+ * 绑定 vertex 坐标值：glVertexAttribPointer
+ *
+ * 需要指出的是，我们的 Java 代码需要获取 shader 代码中定义的变量索引，用于在后面的绘制代码中进行赋值，
+ * 变量索引在 GLSL 程序的生命周期内（链接之后和销毁之前），都是固定的，只需要获取一次。
+ *
  * Created by panwenjuan on 18-1-5.
  */
 
