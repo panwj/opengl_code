@@ -32,6 +32,8 @@
 
         <activity android:name=".comtriangle.CommonTriangleActivity" android:launchMode="singleInstance" />
 
+        <activity android:name=".threedimensional.Stl3DActivity" android:launchMode="singleInstance" />
+
     </application>
 
 </manifest>
