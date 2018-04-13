@@ -19,7 +19,7 @@ public class StlGLRenderer implements GLSurfaceView.Renderer {
     private Context mContext;
     private Model model;
     private Point mCenterPoint;
-    private Point eye = new Point(0, 0, 3);
+    private Point eye = new Point(0, 0, -3);
     private Point up = new Point(0, 1, 0);
     private Point center = new Point(0, 0, 0);
     private float mScalef = 1;
@@ -52,6 +52,7 @@ public class StlGLRenderer implements GLSurfaceView.Renderer {
         float r = model.getR();
         //r是半径，不是直径，因此用0.5/r可以算出缩放比例
         mScalef = 0.5f / r;
+//        mScalef = (0.5f / r) * 2;
         mCenterPoint = model.getCenterPoint();
     }
 
@@ -76,10 +77,10 @@ public class StlGLRenderer implements GLSurfaceView.Renderer {
         GLU.gluLookAt(gl10, eye.x, eye.y, eye.z, center.x, center.y,
                 center.z, up.x, up.y, up.z);
 
-        gl10.glRotatef(mDegree, 0, 1, 0);
+        gl10.glRotatef(mDegree, 1, 1, 0);
 
         gl10.glScalef(mScalef, mScalef, mScalef);
-        gl10.glTranslatef(-mCenterPoint.x, -mCenterPoint.y, -mCenterPoint.z);
+        gl10.glTranslatef(mCenterPoint.x, mCenterPoint.y, mCenterPoint.z);
 
         gl10.glEnableClientState(GL10.GL_NORMAL_ARRAY);
         gl10.glEnableClientState(GL10.GL_VERTEX_ARRAY);
