@@ -80,7 +80,7 @@ public class StlGLRenderer implements GLSurfaceView.Renderer {
         gl10.glRotatef(mDegree, 1, 1, 0);
 
         gl10.glScalef(mScalef, mScalef, mScalef);
-        gl10.glTranslatef(mCenterPoint.x, mCenterPoint.y, mCenterPoint.z);
+        gl10.glTranslatef(-mCenterPoint.x, -mCenterPoint.y, -mCenterPoint.z);
 
         gl10.glEnableClientState(GL10.GL_NORMAL_ARRAY);
         gl10.glEnableClientState(GL10.GL_VERTEX_ARRAY);
