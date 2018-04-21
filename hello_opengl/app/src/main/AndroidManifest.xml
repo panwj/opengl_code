@@ -32,7 +32,9 @@
 
         <activity android:name=".comtriangle.CommonTriangleActivity" android:launchMode="singleInstance" />
 
-        <activity android:name=".com.test.opengl.stl.threedimensional.Stl3DActivity" android:launchMode="singleInstance" />
+        <activity android:name=".stl.threedimensional.Stl3DActivity" android:launchMode="singleInstance" />
+
+        <activity android:name=".stl.konglong.KongLongSTLActivity" android:launchMode="singleInstance" />
 
     </application>
 

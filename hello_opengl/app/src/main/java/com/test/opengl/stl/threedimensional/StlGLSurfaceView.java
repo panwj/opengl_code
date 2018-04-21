@@ -1,4 +1,4 @@
-package com.test.opengl.com.test.opengl.stl.threedimensional;
+package com.test.opengl.stl.threedimensional;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;

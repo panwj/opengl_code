@@ -1,4 +1,4 @@
-package com.test.opengl.com.test.opengl.stl.threedimensional;
+package com.test.opengl.stl.threedimensional;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
@@ -6,10 +6,10 @@ import android.opengl.GLU;
 import android.util.Log;
 
 import com.test.opengl.Constant;
-import com.test.opengl.com.test.opengl.stl.Model;
-import com.test.opengl.com.test.opengl.stl.Point;
-import com.test.opengl.com.test.opengl.stl.STLReader;
-import com.test.opengl.com.test.opengl.stl.Util;
+import com.test.opengl.stl.Model;
+import com.test.opengl.stl.Point;
+import com.test.opengl.stl.STLReader;
+import com.test.opengl.stl.Util;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;

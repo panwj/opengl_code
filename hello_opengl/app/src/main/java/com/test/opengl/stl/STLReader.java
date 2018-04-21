@@ -1,9 +1,6 @@
-package com.test.opengl.com.test.opengl.stl;
+package com.test.opengl.stl;
 
 import android.content.Context;
-
-import com.test.opengl.com.test.opengl.stl.Model;
-import com.test.opengl.com.test.opengl.stl.Util;
 
 import java.io.File;
 import java.io.FileInputStream;

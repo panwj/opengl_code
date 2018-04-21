@@ -1,4 +1,4 @@
-package com.test.opengl.com.test.opengl.stl;
+package com.test.opengl.stl;
 
 /**
  * Created by panwenjuan on 18-4-12.

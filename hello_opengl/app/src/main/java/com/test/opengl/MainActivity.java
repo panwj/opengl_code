@@ -11,7 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.test.opengl.comtriangle.CommonTriangleActivity;
-import com.test.opengl.com.test.opengl.stl.threedimensional.Stl3DActivity;
+import com.test.opengl.stl.konglong.KongLongSTLActivity;
+import com.test.opengl.stl.threedimensional.Stl3DActivity;
 import com.test.opengl.triangle.TriangleActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_com_triangle).setOnClickListener(this);
 
         findViewById(R.id.btn_3d).setOnClickListener(this);
+
+        findViewById(R.id.btn_3d_konglong).setOnClickListener(this);
 
     }
 
@@ -86,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_3d:
                 startStl3DActivity();
                 break;
+            case R.id.btn_3d_konglong:
+                startStlKonglong3DActivity();
+                break;
         }
     }
 
@@ -101,6 +107,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void startStl3DActivity() {
         Intent intent = new Intent(this, Stl3DActivity.class);
+        startActivity(intent);
+    }
+
+    private void startStlKonglong3DActivity() {
+        Intent intent = new Intent(this, KongLongSTLActivity.class);
         startActivity(intent);
     }
 }
