@@ -11,7 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.test.opengl.comtriangle.CommonTriangleActivity;
-import com.test.opengl.threedimensional.Stl3DActivity;
+import com.test.opengl.com.test.opengl.stl.threedimensional.Stl3DActivity;
 import com.test.opengl.triangle.TriangleActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
