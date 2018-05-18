@@ -1,5 +1,9 @@
 package com.test.opengl.stl;
 
+import android.util.Log;
+
+import com.test.opengl.Constant;
+
 import java.nio.FloatBuffer;
 
 /**
@@ -23,12 +27,12 @@ public class Model {
     private FloatBuffer vnormBuffer;
 
     //以下分别保存所有点在x,y,z方向的最大值、最小值
-    float maxX;
-    float maxY;
-    float maxZ;
-    float minX;
-    float minY;
-    float minZ;
+    public float maxX;
+    public float maxY;
+    public float maxZ;
+    public float minX;
+    public float minY;
+    public float minZ;
 
     //获取模型的中心点
     public Point getCenterPoint() {
@@ -53,12 +57,16 @@ public class Model {
     public void setVerts(float[] verts) {
         this.verts = verts;
         vertBuffer = Util.floatToBuffer(verts);
+        Log.d(Constant.TAG, "verts = " + verts);
+        Log.d(Constant.TAG, "vertBuffer = " + vertBuffer);
     }
 
     //设置对应顶点数组向量的同时，设置对应的buffer
     public void setVnorms(float[] vnorms) {
         this.vnorms = vnorms;
         vnormBuffer = Util.floatToBuffer(vnorms);
+        Log.d(Constant.TAG, "vnorms = " + vnorms);
+        Log.d(Constant.TAG, "vnormBuffer = " + vnormBuffer);
     }
 
     public float[] getVerts() {

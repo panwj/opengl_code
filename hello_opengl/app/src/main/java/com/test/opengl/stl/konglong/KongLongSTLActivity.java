@@ -24,11 +24,17 @@ public class KongLongSTLActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if(mGLSurfaceView != null) {
+            mGLSurfaceView.onResume();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        if (mGLSurfaceView != null) {
+            mGLSurfaceView.onPause();
+        }
     }
 
     @Override
