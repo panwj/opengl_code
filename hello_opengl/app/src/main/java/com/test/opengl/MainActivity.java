@@ -80,11 +80,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_triangle:
-                startTriangleActivity();
-                break;
             case R.id.btn_com_triangle:
                 startComTriangleActivity();
+                break;
+            case R.id.btn_triangle:
+                startTriangleActivity();
                 break;
             case R.id.btn_3d:
                 startStl3DActivity();
