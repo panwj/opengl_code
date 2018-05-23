@@ -44,11 +44,17 @@ import javax.microedition.khronos.opengles.GL10;
  * http://hukai.me/android-training-course-in-chinese/graphics/opengl/shapes.html
  *
  *
- * GLSL（OpenGL Shader Language ：OpenGL 需要加载 GLSL 程序，让 GPU 进行绘制
+ * GLSL（OpenGL Shader Language ： 是用来在OpenGL中着色编程的语言，也即开发人员写的短小的自定义程序，
+ * 他们是在图形卡的GPU （Graphic Processor Unit图形处理单元）上执行的，代替了固定的渲染管线的一部分，
+ * 使渲染管线中不同层次具有可编程型。比如：视图转换、投影转换等
+ *
+ * GLSL（GL Shading Language）的着色器代码分成2个部分：Vertex Shader（顶点着色器）和Fragment（片断着色器）,
+ * 有时还会有Geometry Shader（几何着色器）
+ *
  * https://blog.piasy.com/2016/06/07/Open-gl-es-android-2-part-1/
  *
  *
- * Shader包含OpenGL Shading Language(GLSL)代码，必须在OpenGL ES环境下先编译再使用
+ * Shader包含 OpenGL Shading Language(GLSL)代码，必须在OpenGL ES环境下先编译再使用
  *
  * 创建 GLSL 程序：glCreateProgram
  * 加载 shader 代码：glShaderSource 和 glCompileShader
