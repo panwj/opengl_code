@@ -18,7 +18,7 @@ public class HelloGLSurfaceView extends GLSurfaceView {
 
     public HelloGLSurfaceView(Context context) {
         super(context);
-        // OpenGL 设置使用的版本
+        // OpenGL 设置使用的版本, 实质创建 OpenGL ES 的上下文 context
         setEGLContextClientVersion(2);
         // Set the Renderer for drawing on the GLSurfaceView'
         mRenderer = new HelloGLRenderer(context);
@@ -30,15 +30,17 @@ public class HelloGLSurfaceView extends GLSurfaceView {
 
     public HelloGLSurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        // OpenGL 设置使用的版本
+        // OpenGL 设置使用的版本, 实质创建 OpenGL ES 的上下文 context
         setEGLContextClientVersion(2);
         // Set the Renderer for drawing on the GLSurfaceView
         mRenderer = new HelloGLRenderer(context);
         setRenderer(mRenderer);
 
         /**
-         * 设置渲染模式，仅在绘制数据发生变化时才在视图中进行绘制操作：如果选用这一配置选项
-         ，那么除非调用了requestRender()，否则GLSurfaceView不会被重新绘制，这样做可以让应用的性能及效率得到提高。
+         * RENDERMODE_WHEN_DIRTY 和 RENDERMODE_CONTINUOUSLY
+         * 设置渲染模式，前者时懒渲染，仅在绘制数据发生变化时才在视图中进行绘制操作：如果选用这一配置选项
+         * 那么除非调用了requestRender()，否则GLSurfaceView不会被重新绘制，这样做可以让应用的性能及效率得到提高。
+         * 后者是不停的在绘制
          */
         setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
     }

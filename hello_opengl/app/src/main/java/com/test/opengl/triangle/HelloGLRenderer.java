@@ -44,8 +44,11 @@ import javax.microedition.khronos.opengles.GL10;
  * http://hukai.me/android-training-course-in-chinese/graphics/opengl/shapes.html
  *
  *
- * GLSL（OpenGL Shader Language）
+ * GLSL（OpenGL Shader Language ：OpenGL 需要加载 GLSL 程序，让 GPU 进行绘制
  * https://blog.piasy.com/2016/06/07/Open-gl-es-android-2-part-1/
+ *
+ *
+ * Shader包含OpenGL Shading Language(GLSL)代码，必须在OpenGL ES环境下先编译再使用
  *
  * 创建 GLSL 程序：glCreateProgram
  * 加载 shader 代码：glShaderSource 和 glCompileShader
@@ -55,6 +58,11 @@ import javax.microedition.khronos.opengles.GL10;
  * 获取 shader 代码中的变量索引：glGetAttribLocation
  * 启用 vertex：glEnableVertexAttribArray
  * 绑定 vertex 坐标值：glVertexAttribPointer
+ *
+ * 绘制一个简单的图像至少需要一个vertex shader来绘制一个形状和一个fragment shader来为形状着色
+ * VertexShader：用于渲染形状的顶点的OpenGL ES图形代码
+ * FragmentShader：用于渲染形状的外观（颜色或纹理）的OpenGL ES代码
+ * Program：一个OpenGL ES对象，包含了你想要用来绘制一个或多个形状的shader
  *
  * 需要指出的是，我们的 Java 代码需要获取 shader 代码中定义的变量索引，用于在后面的绘制代码中进行赋值，
  * 变量索引在 GLSL 程序的生命周期内（链接之后和销毁之前），都是固定的，只需要获取一次。
@@ -116,7 +124,7 @@ public class HelloGLRenderer implements GLSurfaceView.Renderer {
         GLES20.glLinkProgram(mProgram);                  // creates OpenGL program executables
         // you are ready to draw the triangle object in the OpenGL view.
 
-        // get handle to the vertex shader's vPosition member
+        // 获取指向vertex shader的成员vPosition的handle
         maPositionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");
     }
 
@@ -176,9 +184,11 @@ public class HelloGLRenderer implements GLSurfaceView.Renderer {
         // Add program to OpenGL environment
         GLES20.glUseProgram(mProgram);
 
-        // Prepare the triangle data
-        GLES20.glVertexAttribPointer(maPositionHandle, 3, GLES20.GL_FLOAT, false, 12, mTriangleView.getTriangleFloatBuffer());
+        //启用一个指向三角形的顶点数组的handle
         GLES20.glEnableVertexAttribArray(maPositionHandle);
+        // 获取指向vertex shader的成员vPosition的handle
+        GLES20.glVertexAttribPointer(maPositionHandle, 3, GLES20.GL_FLOAT, false, 12, mTriangleView.getTriangleFloatBuffer());
+
         GLES20.glUniformMatrix4fv(muMVPMatrixHandle, 1, false, mMVPMatrix, 0);//合并视投
 //        GLES20.glUniformMatrix4fv(muMVPMatrixHandle, 1, false, mProjMatrix, 0);//归一化
 
