@@ -1,15 +1,22 @@
 package com.jop.jopscheduler;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    private JobScheduler mJobScheduler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,20 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        final JobInfo.Builder builder = new JobInfo.Builder(Constant.JOB_ID,
+                new ComponentName(getPackageName(), JobSchedulerService.class.getName()));
+//        builder.setPersisted(true);
+        builder.setRequiresDeviceIdle(false);
+        builder.setPeriodic(3000);
+
+        mJobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+
+        if (mJobScheduler.schedule(builder.build()) <= JobScheduler.RESULT_FAILURE) {
+            Log.d(Constant.TAG, "create JobInfo failed...");
+        }
+
+
     }
 
     @Override
