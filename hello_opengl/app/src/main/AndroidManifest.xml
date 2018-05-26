@@ -38,6 +38,8 @@
 
         <activity android:name=".stl.konglong.KongLongSTLActivity" android:launchMode="singleInstance" />
 
+        <activity android:name=".egldemo.EglActivity" />
+
     </application>
 
 </manifest>
