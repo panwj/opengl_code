@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends BaseActivity {
 
@@ -46,6 +47,12 @@ public class MainActivity extends BaseActivity {
             Log.d(Constant.TAG, "create JobInfo failed...");
         }
 
+        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.filter.test.MainActivity">
+
+    <ImageView
+        android:id="@+id/iv_picture1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" />
+
+    <ImageView
+        android:id="@+id/iv_picture"
+        android:layout_toRightOf="@id/iv_picture1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_above="@+id/seekbar_saturation"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="饱和度"/>
+
+    <SeekBar
+        android:id="@+id/seekbar_saturation"
+        android:layout_above="@+id/tv_1"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_above="@+id/seekbar_brightness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="亮度"/>
+
+    <SeekBar
+        android:id="@+id/seekbar_brightness"
+        android:layout_above="@+id/ll_filter"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/ll_filter"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_low"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:gravity="center"
+            android:text="-"
+            android:textSize="45sp"/>
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="100dp"
+            android:layout_height="56dp"
+            android:gravity="center"
+            android:textSize="40sp"/>
+
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:gravity="center"
+            android:text="+"
+            android:textSize="40sp"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

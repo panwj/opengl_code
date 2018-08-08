@@ -1,0 +1,116 @@
+{
+  "project_info": {
+    "project_number": "1079713201212",
+    "firebase_url": "https://test-8072e.firebaseio.com",
+    "project_id": "test-8072e",
+    "storage_bucket": "test-8072e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079713201212:android:d1e08f7f7c9c92ae",
+        "android_client_info": {
+          "package_name": "com.google.firebase.quickstart.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079713201212-hjl6m581rdsntbnve7kjcudck4arvk29.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1079713201212-hjl6m581rdsntbnve7kjcudck4arvk29.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsruSET7ZmQY-Fo5g5Mi4bGgTHRkrhx2Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079713201212:android:f3c32b45bfb445f8",
+        "android_client_info": {
+          "package_name": "com.jop.jopscheduler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079713201212-hjl6m581rdsntbnve7kjcudck4arvk29.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1079713201212-hjl6m581rdsntbnve7kjcudck4arvk29.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsruSET7ZmQY-Fo5g5Mi4bGgTHRkrhx2Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079713201212:android:1a296c8a45cede77",
+        "android_client_info": {
+          "package_name": "com.weather.test.weather_sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079713201212-hjl6m581rdsntbnve7kjcudck4arvk29.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1079713201212-hjl6m581rdsntbnve7kjcudck4arvk29.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsruSET7ZmQY-Fo5g5Mi4bGgTHRkrhx2Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
